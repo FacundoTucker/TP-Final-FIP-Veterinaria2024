@@ -1,4 +1,3 @@
-import { GeneradorID } from "./GeneradorID";
 import { Veterinaria } from "./Veterinaria";
 import { Cliente } from "./Cliente";
 import { Paciente } from "./Paciente";
