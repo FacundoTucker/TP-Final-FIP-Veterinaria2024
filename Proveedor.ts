@@ -11,7 +11,22 @@ export class Proveedor {
         this.telefono = telefono;
     }
 
+    public getNombre(): string {
+         return this.nombre;
+    }
+
+    public getTelefono(): string {
+        return this.nombre;
+    }
+
     public getID(): number {
         return this.id;
+    }
+
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+    public setTelefono(telefono: string): void {
+        this.telefono = telefono;
     }
 }
