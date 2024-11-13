@@ -21,4 +21,12 @@ export class Veterinaria {
     public getID(): number {
         return this.id;
     }
+
+    
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+    public setDireccion(direccion: string): void {
+        this.direccion = direccion;
+    }
 }
