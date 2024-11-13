@@ -22,9 +22,6 @@ const proveedor = new Proveedor("Proveedor ABC", "123123123", generador);
 
 redVeterinarias.agregarVeterinaria(veterinaria);
 redVeterinarias.agregarCliente(clienteJuan);
-redVeterinarias.agregarPaciente(pacienteFirulais);
-redVeterinarias.agregarPaciente(pacienteMichi);
-redVeterinarias.agregarPaciente(pacienteLoro);
 redVeterinarias.agregarProveedor(proveedor);
 
 clienteJuan.agregarMascota(pacienteFirulais);
@@ -37,6 +34,10 @@ clienteJuan.consultar(pacienteFirulais);
 clienteJuan.consultar(pacienteMichi);
 clienteJuan.consultar(pacienteLoro);
 
+
+console.log("Veterinarias:", redVeterinarias.getVeterinarias());
+console.log("Clientes:", redVeterinarias.getClientes());
+console.log("Proveedores:", redVeterinarias.getProveedores());
 
 console.log("Veterinarias:", redVeterinarias.getVeterinarias());
 console.log("Clientes:", redVeterinarias.getClientes());
