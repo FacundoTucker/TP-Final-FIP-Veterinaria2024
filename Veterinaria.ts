@@ -10,7 +10,14 @@ export class Veterinaria {
         this.nombre = nombre;
         this.direccion = direccion;
     }
+    
+    public getNombre(): string {
+        return this.nombre;
+    }
 
+    public getDireccion(): string {
+        return this.direccion;
+    }
     public getID(): number {
         return this.id;
     }
