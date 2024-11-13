@@ -34,7 +34,15 @@ export class Cliente {
         return this.telefono;
     }
 
+    
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
+    public setTelefono(telefono: string): void {
+        this.telefono = telefono;
+    }
 
+    
     public consultar(mascota: Paciente): void {
         console.log("Consulta realizada a: " + mascota.getNombre());
         this.incrementarVisitas();
