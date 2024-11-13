@@ -19,4 +19,9 @@ export abstract class Paciente {
     }
 
     abstract hacerRuido(): void
+
+    
+    public setNombre(nombre: string): void {
+        this.nombre = nombre;
+    }
 }
