@@ -6,7 +6,7 @@ import { Proveedor } from "./Proveedor";
 export class RedVeterinarias {
     private veterinarias: Veterinaria[] = [];
     private clientes: Cliente[] = [];
-    private pacientes: Paciente[] = [];
+    //private pacientes: Paciente[] = [];
     private proveedores: Proveedor[] = [];
 
     //metodos agregar
@@ -27,9 +27,9 @@ export class RedVeterinarias {
     public getClientes(): Cliente[] {
         return this.clientes;
     }
-    public getPacientes(): Paciente[] {
+    /*public getPacientes(): Paciente[] {
         return this.pacientes;
-    }
+    }*/
     public getProveedores(): Proveedor[] {
         return this.proveedores;
     }
@@ -38,5 +38,13 @@ export class RedVeterinarias {
     public setVeterinaria(veterinariaAModificar : Veterinaria, nombreNuevo : string, direccionNueva : string) : void {
         veterinariaAModificar.setNombre(nombreNuevo);
         veterinariaAModificar.setDireccion(direccionNueva);
+    }
+    public setCliente(clienteAModificar : Cliente, nombreNuevo : string, telefonoNuevo : number) : void {
+        clienteAModificar.setNombre(nombreNuevo);
+        clienteAModificar.setTelefono(telefonoNuevo);
+    }
+    public setProveedor(proveedorAModificar : Cliente, nombreNuevo : string, telefonoNuevo : number) : void {
+        proveedorAModificar.setNombre(nombreNuevo);
+        proveedorAModificar.setTelefono(telefonoNuevo);
     }
 }

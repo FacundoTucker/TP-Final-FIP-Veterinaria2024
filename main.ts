@@ -12,13 +12,13 @@ const generador = new GeneradorID();
 const redVeterinarias = new RedVeterinarias();
 
 const veterinaria = new Veterinaria("Veterinaria M1", "Vicente Lopez 2037", generador);
-const clienteJuan = new Cliente("Juan Pérez", "123456789", generador);
+const clienteJuan = new Cliente("Juan Pérez", 123456789, generador);
 
 const pacienteFirulais = new Perro("Firulais", clienteJuan);
 const pacienteMichi = new Gato("Michi", clienteJuan);
 const pacienteLoro = new Exotico("Loro Pepe", clienteJuan, "pio pio");
 
-const proveedor = new Proveedor("Proveedor ABC", "123123123", generador);
+const proveedor = new Proveedor("Proveedor ABC", 123123123, generador);
 
 redVeterinarias.agregarVeterinaria(veterinaria);
 redVeterinarias.agregarCliente(clienteJuan);

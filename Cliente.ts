@@ -4,12 +4,12 @@ import { Paciente } from "./Paciente";
 export class Cliente {
     private id: number;
     private nombre: string;
-    private telefono: string;
+    private telefono: number;
     private visitas: number = 0;
     private esVip: boolean = false;
     private mascotas: Paciente[] = [];
 
-    constructor(nombre: string, telefono: string, generador: GeneradorID) {
+    constructor(nombre: string, telefono: number, generador: GeneradorID) {
         this.id = generador.generarIDUnico(); // usamos el generador de ID único
         this.nombre = nombre;
         this.telefono = telefono;
@@ -22,7 +22,7 @@ export class Cliente {
     public getNombre(): string {
         return this.nombre;
     }
-    public getTelefono(): string {
+    public getTelefono(): number {
         return this.telefono;
     }
     public getEsVip() : boolean {
@@ -36,7 +36,7 @@ export class Cliente {
     public setNombre(nombre: string): void {
         this.nombre = nombre;
     }
-    public setTelefono(telefono: string): void {
+    public setTelefono(telefono: number): void {
         this.telefono = telefono;
     }
 
