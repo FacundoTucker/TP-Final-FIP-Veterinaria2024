@@ -23,6 +23,20 @@ export class RedVeterinarias {
         this.proveedores.push(proveedor);
     }
 
+    //metodos eliminar
+    public eliminarVeterinaria(veterinariaAEliminar: Veterinaria): void {
+        const index = this.veterinarias.indexOf(veterinariaAEliminar);
+        if (index !== -1) this.veterinarias.splice(index, 1);
+    }
+    public eliminarCliente(clienteAEliminar: Cliente): void {
+        const index = this.clientes.indexOf(clienteAEliminar);
+        if (index !== -1) this.clientes.splice(index, 1);
+    }
+    public eliminarProveedor(proveedorAEliminar: Proveedor): void {
+        const index = this.proveedores.indexOf(proveedorAEliminar);
+        if (index !== -1) this.proveedores.splice(index, 1);
+    }
+
     // Getters
     public getVeterinarias(): Veterinaria[] {
         return this.veterinarias;
