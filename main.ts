@@ -37,7 +37,7 @@ clienteJuan.consultar(pacienteLoro);
 
 console.log("Veterinarias:", redVeterinarias.getVeterinarias());
 console.log("Clientes:", redVeterinarias.getClientes());
-console.log("Mascotas del cliente: ", clienteJuan.getMascotas());
+console.log("Mascotas del cliente: ", clienteJuan.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
 console.log("Proveedores:", redVeterinarias.getProveedores());
 
 redVeterinarias.setVeterinaria(veterinaria, "Veterinaria M3", "Coronel Suarez 5400");
