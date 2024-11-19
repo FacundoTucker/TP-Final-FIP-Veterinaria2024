@@ -42,3 +42,16 @@ console.log("Proveedores:", redVeterinarias.getProveedores());
 
 redVeterinarias.setVeterinaria(veterinaria, "Veterinaria M3", "Coronel Suarez 5400");
 console.log(redVeterinarias.getVeterinarias());
+
+//lista eliminacion
+redVeterinarias.eliminarVeterinaria(veterinaria);
+redVeterinarias.eliminarProveedor(proveedor);
+redVeterinarias.eliminarCliente(clienteJuan);
+clienteJuan.eliminarMascota(pacienteFirulais);
+clienteJuan.eliminarMascota(pacienteMichi);
+clienteJuan.eliminarMascota(pacienteLoro);
+
+console.log("Veterinarias:", redVeterinarias.getVeterinarias());
+console.log("Clientes:", redVeterinarias.getClientes());
+console.log("Mascotas del cliente: ", clienteJuan.getMascotas());
+console.log("Proveedores:", redVeterinarias.getProveedores());
