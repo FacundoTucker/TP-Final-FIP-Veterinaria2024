@@ -5,7 +5,7 @@ export abstract class Paciente {
     private id: number;
     private nombre: string;
 
-    constructor(nombre: string, idDuenio: Cliente, generador: GeneradorID) {
+    constructor(nombre: string, idDuenio: Cliente) {
         this.nombre = nombre;
         this.id = idDuenio.getID();
     }

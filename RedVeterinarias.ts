@@ -9,18 +9,13 @@ export class RedVeterinarias {
     private pacientes: Paciente[] = [];
     private proveedores: Proveedor[] = [];
 
+    //metodos agregar
     public agregarVeterinaria(veterinaria: Veterinaria): void {
         this.veterinarias.push(veterinaria);
     }
-
     public agregarCliente(cliente: Cliente): void {
         this.clientes.push(cliente);
     }
-
-    public agregarPaciente(paciente: Paciente): void {
-        this.pacientes.push(paciente);
-    }
-
     public agregarProveedor(proveedor: Proveedor): void {
         this.proveedores.push(proveedor);
     }
@@ -29,16 +24,19 @@ export class RedVeterinarias {
     public getVeterinarias(): Veterinaria[] {
         return this.veterinarias;
     }
-
     public getClientes(): Cliente[] {
         return this.clientes;
     }
-
     public getPacientes(): Paciente[] {
         return this.pacientes;
     }
-
     public getProveedores(): Proveedor[] {
         return this.proveedores;
+    }
+
+    //setters
+    public setVeterinaria(veterinariaAModificar : Veterinaria, nombreNuevo : string, direccionNueva : string) : void {
+        veterinariaAModificar.setNombre(nombreNuevo);
+        veterinariaAModificar.setDireccion(direccionNueva);
     }
 }
