@@ -58,4 +58,10 @@ export class Cliente {
     public agregarMascota(mascota: Paciente): void {
         this.mascotas.push(mascota);
     }
+
+    //metodo eliminar mascota
+    public eliminarMascota(mascotaAEliminar: Paciente): void {
+        const index = this.mascotas.indexOf(mascotaAEliminar);
+        if (index !== -1) this.mascotas.splice(index, 1);
+    }
 }
