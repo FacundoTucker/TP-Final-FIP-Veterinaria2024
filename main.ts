@@ -11,12 +11,12 @@ const generador = new GeneradorID();
 
 const redVeterinarias = new RedVeterinarias();
 
-const veterinaria = new Veterinaria("Vet Central", "Calle Falsa 123", generador);
+const veterinaria = new Veterinaria("Veterinaria M1", "Vicente Lopez 2037", generador);
 const clienteJuan = new Cliente("Juan Pérez", "123456789", generador);
 
-const pacienteFirulais = new Perro("Firulais", clienteJuan, generador);
-const pacienteMichi = new Gato("Michi", clienteJuan, generador);
-const pacienteLoro = new Exotico("Loro Pepe", clienteJuan, generador, "pio pio");
+const pacienteFirulais = new Perro("Firulais", clienteJuan);
+const pacienteMichi = new Gato("Michi", clienteJuan);
+const pacienteLoro = new Exotico("Loro Pepe", clienteJuan, "pio pio");
 
 const proveedor = new Proveedor("Proveedor ABC", "123123123", generador);
 
@@ -37,9 +37,8 @@ clienteJuan.consultar(pacienteLoro);
 
 console.log("Veterinarias:", redVeterinarias.getVeterinarias());
 console.log("Clientes:", redVeterinarias.getClientes());
+console.log("Mascotas del cliente: ", clienteJuan.getMascotas());
 console.log("Proveedores:", redVeterinarias.getProveedores());
 
-console.log("Veterinarias:", redVeterinarias.getVeterinarias());
-console.log("Clientes:", redVeterinarias.getClientes());
-console.log("Pacientes:", redVeterinarias.getPacientes());
-console.log("Proveedores:", redVeterinarias.getProveedores());
+redVeterinarias.setVeterinaria(veterinaria, "Veterinaria M3", "Coronel Suarez 5400");
+console.log(redVeterinarias.getVeterinarias());
