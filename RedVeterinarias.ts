@@ -56,14 +56,14 @@ export class RedVeterinarias {
         veterinariaAModificar.setNombre(nombreNuevo);
         veterinariaAModificar.setDireccion(direccionNueva);
     }
-    public setCliente(clienteAModificar : Cliente, nombreNuevo : string, telefonoNuevo : number) : void {
+    public setCliente(clienteAModificar : Cliente, nombreNuevo? : string, telefonoNuevo? : number) : void {
         clienteAModificar.setNombre(nombreNuevo);
         clienteAModificar.setTelefono(telefonoNuevo);
     }
     public setPaciente(pacienteAModificar : Paciente, nombreNuevo : string): void {
         pacienteAModificar.setNombre(nombreNuevo);
     }
-    public setProveedor(proveedorAModificar : Cliente, nombreNuevo : string, telefonoNuevo : number) : void {
+    public setProveedor(proveedorAModificar : Proveedor, nombreNuevo? : string, telefonoNuevo? : number) : void {
         proveedorAModificar.setNombre(nombreNuevo);
         proveedorAModificar.setTelefono(telefonoNuevo);
     }
