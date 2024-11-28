@@ -11,17 +11,15 @@ import { Proveedor } from "./Proveedor";
 const generador = new GeneradorID();
 const redVeterinarias = new RedVeterinarias();
 const veterinaria = new Veterinaria("Veterinaria M1", "Vicente Lopez 2037", generador);
-const clienteJuan = new Cliente("Juan Pérez", 123456789, generador);
 
-const pacienteFirulais = new Perro("Firulais", clienteJuan);
-const pacienteMichi = new Gato("Michi", clienteJuan);
-const pacienteLoro = new Exotico("Loro Pepe", clienteJuan, "pio pio");
+// const pacienteFirulais = new Perro("Firulais", clienteJuan);
+// const pacienteMichi = new Gato("Michi", clienteJuan);
+// const pacienteLoro = new Exotico("Loro Pepe", clienteJuan, "pio pio");
 
 const proveedor = new Proveedor("Proveedor ABC", 123123123, generador);
 
 console.log("Veterinarias:", redVeterinarias.getVeterinarias());
 console.log("Clientes:", redVeterinarias.getClientes());
-console.log("Mascotas del cliente: ", clienteJuan.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
 console.log("Proveedores:", redVeterinarias.getProveedores());
 
 export class menu{
@@ -48,17 +46,17 @@ export class menu{
     public seleccion(){
     let opcion : number = readlineSync.questionInt("Ingrese una opcion: ");
     switch (opcion) {
-        case 1://"1 - Cargar Cliente."            
-            redVeterinarias.agregarCliente(clienteJuan);
+        case 1://"1 - Cargar Cliente." 
+            let nombre = readlineSync.question('Ingrese el nombre del cliente: ');
+            let tel = parseInt(readlineSync.question('Ingrese el telefono del cliente: '));
+            const nuevoCliente = new Cliente(nombre, tel, generador);           
+            redVeterinarias.agregarCliente(nuevoCliente);
             console.log("Clientes:", redVeterinarias.getClientes());
+            console.log("Mascotas del cliente: ", nuevoCliente.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
             this.iniciar();
             break;
-        case 2: //"2 - Cargar Paciente.");
-            clienteJuan.agregarMascota(pacienteFirulais);
-            clienteJuan.agregarMascota(pacienteMichi);
-            clienteJuan.agregarMascota(pacienteLoro);
-            console.log("Mascotas del cliente: ", clienteJuan.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
-            this.iniciar();
+        case 2: //"2 - Cargar Paciente.");           
+            this.seleccion2(redVeterinarias.getClientes()[0]);
             break;
         case 3://"3 - Cargar Proveedor."
             redVeterinarias.agregarProveedor(proveedor);
@@ -72,7 +70,7 @@ export class menu{
             break;
         case 5://"5 - Modificar Cliente.")
             this.iniciar();
-            redVeterinarias.setCliente(clienteJuan, "juanete")
+            redVeterinarias.setCliente(nuevoCliente, "juanete")
             console.log("Clientes:", redVeterinarias.getClientes());
             break;
         case 6://"6 - Modificar veterinaria."
@@ -81,9 +79,9 @@ export class menu{
             this.iniciar();
             break;
         case 7://"7 - Modificar Paciente.""
-            redVeterinarias.setPaciente(pacienteFirulais, "firu2");
+            // redVeterinarias.setPaciente(pacienteFirulais, "firu2");
             this.iniciar();
-            console.log("Mascotas del cliente: ", clienteJuan.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
+            console.log("Mascotas del cliente: ", nuevoCliente.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
             break;
         case 8: //"8 - Modificar Proveedor."
             redVeterinarias.setProveedor(proveedor,"proveedooor", 34553434);
@@ -91,15 +89,13 @@ export class menu{
             this.iniciar();
             break;
         case 9://"9 - Eliminar Cliente.")
-            redVeterinarias.eliminarCliente(clienteJuan);
+            // redVeterinarias.eliminarCliente(nuevoCliente);
             console.log("Clientes:", redVeterinarias.getClientes());
             this.iniciar();
             break;
         case 10: //"10 -Eliminar Paciente."
-            clienteJuan.eliminarMascota(pacienteFirulais);
-            clienteJuan.eliminarMascota(pacienteMichi);
-            clienteJuan.eliminarMascota(pacienteLoro);
-            console.log("Mascotas del cliente: ", clienteJuan.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
+            // clienteJuan.eliminarMascota(pacienteFirulais);
+            console.log("Mascotas del cliente: ", nuevoCliente.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
             this.iniciar();
             break;
         case 11://"11- Eliminar Proveedor."
@@ -124,6 +120,38 @@ export class menu{
     public iniciar(){
         this.mostrarMenu();
         this.seleccion();
+    }
+    public seleccion2(cliente:Cliente){
+        let opcion : number = readlineSync.questionInt("Ingrese una opcion: \n\r 1_ Perro \n\r 2_Gato \n\r 3_Exotico \n\r 0_Volver al menu anterior \n\r");
+        switch (opcion) {
+            case 1:
+                let nombreCan = readlineSync.question('Ingrese el nombre del paciente: ');
+                let canino = new Perro(nombreCan, cliente);
+                cliente.agregarMascota(canino);
+                this.seleccion2(cliente);
+                break;
+            case 2:
+                let nombreFelino = readlineSync.question('Ingrese el nombre del paciente: ');
+                let felino = new Gato(nombreFelino, cliente);
+                cliente.agregarMascota(felino);
+                this.seleccion2(cliente);
+                break;
+            case 3:
+                let nombreExotico = readlineSync.question('Ingrese el nombre del paciente: ');
+                let onomatopeya = readlineSync.question('Ingrese onomatopeya: ');
+                let exotic = new Exotico(nombreExotico, cliente, onomatopeya);
+                cliente.agregarMascota(exotic);
+                this.seleccion2(cliente);
+                break;
+            case 0:
+                console.log("Mascotas del cliente: ", redVeterinarias.getClientes()[0].getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
+                this.iniciar();
+                break;
+            default:
+            console.log("Ingrese una opcion valida.");
+            this.seleccion2(cliente);
+            break;
+        }
     }
 }
 
