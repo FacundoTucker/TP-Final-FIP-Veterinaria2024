@@ -53,18 +53,34 @@ export class RedVeterinarias {
 
     //setters
     public setVeterinaria(veterinariaAModificar : Veterinaria, nombreNuevo : string, direccionNueva : string) : void {
-        veterinariaAModificar.setNombre(nombreNuevo);
-        veterinariaAModificar.setDireccion(direccionNueva);
+        if(veterinariaAModificar != undefined && nombreNuevo != undefined && direccionNueva != undefined){
+            veterinariaAModificar.setNombre(nombreNuevo);
+            veterinariaAModificar.setDireccion(direccionNueva);
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
-    public setCliente(clienteAModificar : Cliente, nombreNuevo? : string, telefonoNuevo? : number) : void {
-        clienteAModificar.setNombre(nombreNuevo);
-        clienteAModificar.setTelefono(telefonoNuevo);
+    public setCliente(clienteAModificar : Cliente, nombreNuevo : string, telefonoNuevo : number) : void {
+        if(clienteAModificar != undefined && nombreNuevo != undefined && telefonoNuevo != undefined){
+            clienteAModificar.setNombre(nombreNuevo);
+            clienteAModificar.setTelefono(telefonoNuevo);
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
     public setPaciente(pacienteAModificar : Paciente, nombreNuevo : string): void {
-        pacienteAModificar.setNombre(nombreNuevo);
+        if(pacienteAModificar != undefined && nombreNuevo != undefined){
+            pacienteAModificar.setNombre(nombreNuevo);
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
-    public setProveedor(proveedorAModificar : Proveedor, nombreNuevo? : string, telefonoNuevo? : number) : void {
-        proveedorAModificar.setNombre(nombreNuevo);
-        proveedorAModificar.setTelefono(telefonoNuevo);
+    public setProveedor(proveedorAModificar : Proveedor, nombreNuevo : string, telefonoNuevo : number) : void {
+        if(proveedorAModificar != undefined && nombreNuevo != undefined && telefonoNuevo != undefined){
+            proveedorAModificar.setNombre(nombreNuevo);
+            proveedorAModificar.setTelefono(telefonoNuevo);
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
 }

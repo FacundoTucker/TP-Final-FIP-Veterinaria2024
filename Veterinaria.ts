@@ -11,10 +11,10 @@ export class Veterinaria {
         this.direccion = direccion;
     }
     
+    //getters
     public getNombre(): string {
         return this.nombre;
     }
-
     public getDireccion(): string {
         return this.direccion;
     }
@@ -22,11 +22,20 @@ export class Veterinaria {
         return this.id;
     }
 
-    
+    //setters
     public setNombre(nombre: string): void {
-        this.nombre = nombre;
+        if(nombre != undefined){
+            this.nombre = nombre;
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
+
     public setDireccion(direccion: string): void {
-        this.direccion = direccion;
+        if(direccion != undefined){
+            this.direccion = direccion;
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
 }
