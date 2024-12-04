@@ -7,6 +7,7 @@ import { Exotico } from "./Exotico";
 import { Proveedor } from "./Proveedor";
 import { RedVeterinarias } from "./RedVeterinarias";
 
+//instanciamos todas las clases
 const generador = new GeneradorID();
 
 const redVeterinarias = new RedVeterinarias();
@@ -24,15 +25,16 @@ const pacienteLoro = new Exotico("Loro Pepe", clienteJuan);
 const pacienteOso = new Perro("Oso", clienteMaria);
 const pacienteIguana = new Exotico("Iguana verde", clienteMaria)
 
-const proveedor = new Proveedor("Proveedor Alimentar", 123123123, generador);
+const proveedor = new Proveedor("Proveedor Alimentar", 2284037890, generador);
 
-console.log("Testeo");
+
+console.log(" - - Testing Trabajo Veterinaria - - ");
 
 //agregar veterinarias
 redVeterinarias.agregarVeterinaria(veterinariaM1);
 redVeterinarias.agregarVeterinaria(veterinariaAnimalia);
 
-console.log('Veterinarias agregadas:');
+console.log("Veterinarias agregadas: ");
 console.log(redVeterinarias.getVeterinarias());
 
 //agregar clientes
@@ -51,16 +53,14 @@ clienteMaria.agregarMascota(pacienteIguana);
 console.log('\nClientes agregados:');
 console.log(redVeterinarias.getClientes());
 
-//modificacion cliente
+//modificacion cliente y mostramos cliente modificado
 redVeterinarias.setCliente(clienteJuan, "Juan Carlos Perez", 2284887070);
-
-//mostramos cliente modificado
 console.log(redVeterinarias.getClientes());
 
 //eliminar veterinaria
 redVeterinarias.eliminarVeterinaria(veterinariaAnimalia);
 
-console.log('\nVeterinarias después de la eliminación:');
+console.log("Veterinarias despues de la eliminacion:");
 console.log(redVeterinarias.getVeterinarias());
 
 //incrementar visitas del cliente y verificar VIP
@@ -70,8 +70,21 @@ clienteJuan.consultar(pacienteFirulais)
 clienteJuan.consultar(pacienteMichi)
 clienteJuan.consultar(pacienteFirulais)
 
-console.log('\nEstado del cliente después de incrementar visitas:');
+console.log("Estado del VIP del cliente despues de incrementar visitas:");
 console.log(clienteJuan.getEsVip());
+
+//metodos de eliminacion
+console.log("Eliminamos todo:")
+redVeterinarias.eliminarProveedor(proveedor);
+redVeterinarias.eliminarCliente(clienteJuan);
+redVeterinarias.eliminarCliente(clienteMaria);
+redVeterinarias.eliminarVeterinaria(veterinariaM1);
+
+//mostramos todo nuevamente
+console.log(redVeterinarias.getProveedores());
+console.log(redVeterinarias.getVeterinarias());
+console.log(redVeterinarias.getClientes());
+console.log(redVeterinarias.getPacientes());
 
 
 
