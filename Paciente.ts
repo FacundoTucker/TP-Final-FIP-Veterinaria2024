@@ -17,11 +17,12 @@ export abstract class Paciente {
     public getNombre(): string {
         return this.nombre;
     }
-
-    abstract hacerRuido(): void
-
     
     public setNombre(nombre: string): void {
-        this.nombre = nombre;
+        if(nombre != undefined){
+            this.nombre = nombre;
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
 }

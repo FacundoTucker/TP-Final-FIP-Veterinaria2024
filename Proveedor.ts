@@ -24,9 +24,17 @@ export class Proveedor {
     }
 
     public setNombre(nombre: string): void {
-        this.nombre = nombre;
+        if(nombre != undefined){
+            this.nombre = nombre;
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
     public setTelefono(telefono: number): void {
-        this.telefono = telefono;
+        if(telefono != undefined){
+            this.telefono = telefono;
+        } else {
+            console.error("Datos ingresados no validos.")
+        }
     }
 }
