@@ -85,7 +85,14 @@ export class menu{
             console.log("Clientes:", redVeterinarias.getClientes());
             break;
         case 6://"6 - Modificar veterinaria."
-            redVeterinarias.setVeterinaria(veterinaria, "Veterinaria M3", "Coronel Suarez 5400");
+            let idVeterinaria:number=readlineSync.questionInt("Ingrese Id del cliente: ");
+            let redVetes = redVeterinarias.getVeterinarias();
+            let indiceDos = redVetes.findIndex(redVetes => redVetes.getID() === idVeterinaria);
+            if (indiceDos !== -1) {                
+                redVeterinarias.setVeterinaria(redVeterinarias.getVeterinarias()[indiceDos], readlineSync.question("Nombre Veterinaria: "), readlineSync.question("Direccion: ")); 
+            } else {
+                console.log("No se encontró ningún cliente con ese ID.");
+            }        
             console.log("Veterinarias:", redVeterinarias.getVeterinarias());
             this.iniciar();
             break;

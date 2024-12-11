@@ -1,5 +1,4 @@
 import { Paciente } from "./Paciente"
-import { GeneradorID } from "./GeneradorID";
 import { Cliente } from "./Cliente";
 
 export class Exotico extends Paciente {
