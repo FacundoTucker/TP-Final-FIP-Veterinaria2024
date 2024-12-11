@@ -10,14 +10,6 @@ import { Proveedor } from "./Proveedor";
 
 const generador = new GeneradorID();
 const redVeterinarias = new RedVeterinarias();
-const veterinaria = new Veterinaria("Veterinaria M1", "Vicente Lopez 2037", generador);
-
-// const pacienteFirulais = new Perro("Firulais", clienteJuan);
-// const pacienteMichi = new Gato("Michi", clienteJuan);
-// const pacienteLoro = new Exotico("Loro Pepe", clienteJuan, "pio pio");
-
-const proveedor = new Proveedor("Proveedor ABC", 123123123, generador);
-
 console.log("Veterinarias:", redVeterinarias.getVeterinarias());
 console.log("Clientes:", redVeterinarias.getClientes());
 console.log("Proveedores:", redVeterinarias.getProveedores());
@@ -49,28 +41,47 @@ export class menu{
         case 1://"1 - Cargar Cliente." 
             let nombre = readlineSync.question('Ingrese el nombre del cliente: ');
             let tel = parseInt(readlineSync.question('Ingrese el telefono del cliente: '));
-            const nuevoCliente = new Cliente(nombre, tel, generador);           
+            let nuevoCliente = new Cliente(nombre, tel, generador);           
             redVeterinarias.agregarCliente(nuevoCliente);
             console.log("Clientes:", redVeterinarias.getClientes());
             console.log("Mascotas del cliente: ", nuevoCliente.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
             this.iniciar();
             break;
-        case 2: //"2 - Cargar Paciente.");           
-            this.seleccion2(redVeterinarias.getClientes()[0]);
+        case 2: //"2 - Cargar Paciente.");  
+            let idBuscado:number=readlineSync.questionInt("Ingrese Id del cliente: ");
+            let clientes = redVeterinarias.getClientes();
+            let index = clientes.findIndex(cliente => cliente.getID() === idBuscado);
+            if (index !== -1) {
+                this.seleccion2(redVeterinarias.getClientes()[index]);
+            } else {
+                console.log("No se encontró ningún cliente con ese ID.");
+            }           
+            this.iniciar();
+            //mostrar cliente completo
+            console.log("Clientes:", redVeterinarias.getClientes());
             break;
         case 3://"3 - Cargar Proveedor."
+            let proveedor = new Proveedor(readlineSync.question("Nombre proveedor: "),readlineSync.questionInt("Telefono: "),generador);
             redVeterinarias.agregarProveedor(proveedor);
             console.log("Proveedores:", redVeterinarias.getProveedores());
             this.iniciar();
             break;
         case 4: //"4 - Cargar Veterinaria."
+            let veterinaria = new Veterinaria(readlineSync.question("Nombre veterinaria: "), readlineSync.question("Direccion: "), generador);
             redVeterinarias.agregarVeterinaria(veterinaria);
             console.log("Veterinarias:", redVeterinarias.getVeterinarias());
             this.iniciar();
             break;
         case 5://"5 - Modificar Cliente.")
+            let idClienteBuscado:number=readlineSync.questionInt("Ingrese Id del cliente: ");
+            let clienteauxiliar = redVeterinarias.getClientes();
+            let indice = clienteauxiliar.findIndex(clienteauxiliar => clienteauxiliar.getID() === idClienteBuscado);
+            if (indice !== -1) {                
+                redVeterinarias.setCliente(redVeterinarias.getClientes()[indice],readlineSync.question("Nombre cliente: "),readlineSync.questionInt("Telefono: ")); 
+            } else {
+                console.log("No se encontró ningún cliente con ese ID.");
+            }                       
             this.iniciar();
-            redVeterinarias.setCliente(nuevoCliente, "juanete")
             console.log("Clientes:", redVeterinarias.getClientes());
             break;
         case 6://"6 - Modificar veterinaria."
