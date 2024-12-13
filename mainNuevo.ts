@@ -32,10 +32,11 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
-function mostrarMenu() {
   console.log("\n===========================================");
   console.log("  🐾 SISTEMA DE GESTIÓN DE VETERINARIAS 🐾 ");
   console.log("===========================================");
+
+function mostrarMenu() {
   console.log("1. Agregar Veterinaria");
   console.log("2. Agregar Proveedor");
   console.log("3. Agregar Clientes y sus Mascotas");
