@@ -147,7 +147,8 @@ function manejarSeleccion(opcion: string) {
 
     case "8":
       rl.close();
-      console.log("\n✨ ¡Gracias por usar el sistema de veterinarias! ✨");
+      console.log("\n✨¡Gracias por usar nuestro sistema!✨");
+      console.log("===========================================");
       break;
     default:
       console.log("Opción no válida. Intenta de nuevo.");
