@@ -25,103 +25,142 @@ const pacienteIguana = new Exotico("Iguana verde", clienteMaria);
 
 const proveedor = new Proveedor("Proveedor Alimentar", 2284037890, generador);
 
-console.log("===========================================");
-console.log("  🐾 SISTEMA DE GESTIÓN DE VETERINARIAS 🐾 ");
-console.log("===========================================");
+const readline = require("readline");
 
-// Agregar Veterinarias
-redVeterinarias.agregarVeterinaria(veterinariaM1);
-redVeterinarias.agregarVeterinaria(veterinariaAnimalia);
-
-console.log("\n🔹 -- Veterinarias Agregadas -- 🔹");
-redVeterinarias.getVeterinarias().forEach(v => {
-  console.log(`🏥 Veterinaria: ${v.getNombre()} - 📍 Dirección: ${v.getDireccion()} - Id: ${v.getID()}`);
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
 });
 
-// Agregar Proveedores
-redVeterinarias.agregarProveedor(proveedor);
+function mostrarMenu() {
+  console.log("\n===========================================");
+  console.log("  🐾 SISTEMA DE GESTIÓN DE VETERINARIAS 🐾 ");
+  console.log("===========================================");
+  console.log("1. Agregar Veterinaria");
+  console.log("2. Agregar Proveedor");
+  console.log("3. Agregar Clientes y sus Mascotas");
+  console.log("4. Cargar Consultas");
+  console.log("5. Modificar Cliente");
+  console.log("6. Eliminar Veterinaria");
+  console.log("7. Eliminar y Mostrar Todo");
+  console.log("8. Salir");
+  console.log("===========================================");
+}
 
-console.log("\n📦 -- Proveedores Agregados -- 📦");
-redVeterinarias.getProveedores().forEach(p => {
-  console.log(`📞 Proveedor: ${p.getNombre()} - 📱 Teléfono: ${p.getTelefono()} - Id: ${p.getID()}`);
-});
+function manejarSeleccion(opcion: string) {
+  switch (opcion) {
+    case "1":
+      redVeterinarias.agregarVeterinaria(veterinariaM1);
+      redVeterinarias.agregarVeterinaria(veterinariaAnimalia);
+      console.log("\n🔹 -- Veterinarias Agregadas -- 🔹");
+      redVeterinarias.getVeterinarias().forEach(v => {
+        console.log(`🏥 Veterinaria: ${v.getNombre()} - 📍 Dirección: ${v.getDireccion()} - Id: ${v.getID()}`);
+      });
+      pedirOpcion();
+      break;
 
-// Agregar Clientes
-redVeterinarias.agregarCliente(clienteJuan);
-redVeterinarias.agregarCliente(clienteMaria);
+    case "2":
+      redVeterinarias.agregarProveedor(proveedor);
+      console.log("\n📦 -- Proveedores Agregados -- 📦");
+      redVeterinarias.getProveedores().forEach(p => {
+      console.log(`📞 Proveedor: ${p.getNombre()} - 📱 Teléfono: ${p.getTelefono()} - Id: ${p.getID()}`);
+      });
+      pedirOpcion();
+      break;
+        
+    case "3":
+      redVeterinarias.agregarCliente(clienteJuan);
+      redVeterinarias.agregarCliente(clienteMaria);
+      clienteJuan.agregarMascota(pacienteFirulais);
+      clienteJuan.agregarMascota(pacienteMichi);
+      clienteJuan.agregarMascota(pacienteLoro);
+      clienteMaria.agregarMascota(pacienteOso);
+      clienteMaria.agregarMascota(pacienteIguana);
+      console.log("\n👤 -- Clientes y Mascotas Agregados -- 🐾");
+      redVeterinarias.getClientes().forEach(c => {
+      console.log(`🧑‍⚕️ Cliente: ${c.getNombre()} - 📞 Teléfono: ${c.getTelefono()} - Id: ${c.getID()} - Vip: ${c.getEsVip()}`);
+        c.getMascotas().forEach(mascota => {
+         // Verificación del tipo de mascota mediante su clase
+         let emoji = '';
+         if (mascota instanceof Perro) {
+           emoji = '🐶';
+         } else if (mascota instanceof Gato) {
+           emoji = '🐱';
+         } else if (mascota instanceof Exotico) {
+           emoji = '(Exótico)';
+         }
+         console.log(`  🐾 Mascota: ${mascota.getNombre()} ${emoji}`);
+       });
+      });
+      pedirOpcion();
+      break;
+      
+    case "4":
+      console.log("\n🩺 -- Consultas Realizadas -- 🩺");
+      clienteJuan.consultar(pacienteFirulais);
+      clienteJuan.consultar(pacienteLoro);
+      clienteJuan.consultar(pacienteFirulais);
+      clienteJuan.consultar(pacienteMichi);
+      clienteJuan.consultar(pacienteFirulais);
+      clienteMaria.consultar(pacienteOso);
+      clienteMaria.consultar(pacienteIguana);
+      clienteMaria.consultar(pacienteOso);
+      pedirOpcion();
+      break;
+    
+    case "5":
+      console.log("\n✏️ -- Modificación de Cliente -- ✏️");
+      redVeterinarias.setCliente(clienteJuan, "Juan Carlos Perez", 2284887070);
+      redVeterinarias.getClientes().forEach(c => {
+      console.log(`🧑‍⚕️ Cliente: ${c.getNombre()} - 📞 Teléfono: ${c.getTelefono()} - Id: ${c.getID()} - Vip: ${c.getEsVip()}`);
+      });
+      pedirOpcion();
+      break;
+    
+    case "6":
+      console.log("\n❌ -- Eliminación de Veterinaria -- ❌");
+      redVeterinarias.eliminarVeterinaria(veterinariaAnimalia);
+      console.log("Veterinarias después de eliminación:");
+      redVeterinarias.getVeterinarias().forEach(v => {
+      console.log(`🏥 Veterinaria: ${v.getNombre()} -📍 Dirección: ${v.getDireccion()} - Id: ${v.getID()}`);
+      });
+      pedirOpcion();
+      break;
 
-// Agregar Mascotas a los Clientes
-clienteJuan.agregarMascota(pacienteFirulais);
-clienteJuan.agregarMascota(pacienteMichi);
-clienteJuan.agregarMascota(pacienteLoro);
+    case "7":
+      console.log("\n🗑️ -- Eliminación de Todos los Elementos -- 🗑️");
+      redVeterinarias.eliminarProveedor(proveedor);
+      redVeterinarias.eliminarCliente(clienteJuan);
+      redVeterinarias.eliminarCliente(clienteMaria);
+      redVeterinarias.eliminarVeterinaria(veterinariaM1);
+      console.log("\n🔚 -- Resultado Final Luego de la Eliminación -- 🔚");
+      console.log("📦 Proveedores:");
+      console.log(redVeterinarias.getProveedores().length ? redVeterinarias.getProveedores() : "No hay proveedores");
+      console.log("🏥 Veterinarias:");
+      console.log(redVeterinarias.getVeterinarias().length ? redVeterinarias.getVeterinarias() : "No hay veterinarias");
+      console.log("👤 Clientes:");
+      console.log(redVeterinarias.getClientes().length ? redVeterinarias.getClientes() : "No hay clientes");
+      console.log("🐾 Mascotas:");
+      console.log(redVeterinarias.getPacientes().length ? redVeterinarias.getPacientes() : "No hay pacientes");
+      pedirOpcion();
+      break;
 
-clienteMaria.agregarMascota(pacienteOso);
-clienteMaria.agregarMascota(pacienteIguana);
+    case "8":
+      rl.close();
+      console.log("\n✨ ¡Gracias por usar el sistema de veterinarias! ✨");
+      break;
+    default:
+      console.log("Opción no válida. Intenta de nuevo.");
+      pedirOpcion();
+      break;
+  }
+}
 
-console.log("\n👤 -- Clientes y Mascotas Agregados -- 🐾");
-redVeterinarias.getClientes().forEach(c => {
-  console.log(`🧑‍⚕️ Cliente: ${c.getNombre()} - 📞 Teléfono: ${c.getTelefono()} - Id: ${c.getID()} - Vip: ${c.getEsVip()}`);
-  c.getMascotas().forEach(mascota => {
-    // Verificación del tipo de mascota mediante su clase
-    let emoji = '';
-    if (mascota instanceof Perro) {
-      emoji = '🐶';
-    } else if (mascota instanceof Gato) {
-      emoji = '🐱';
-    } else if (mascota instanceof Exotico) {
-      emoji = '(Exótico)';
-    }
-    console.log(`  🐾 Mascota: ${mascota.getNombre()} ${emoji}`);
+function pedirOpcion() {
+  mostrarMenu();
+  rl.question("Elige una opción: ", (opcion: string) => {
+    manejarSeleccion(opcion);
   });
-});
+}
 
-// Realizar Consultas (Incrementar Visitas)
-console.log("\n🩺 -- Consultas Realizadas -- 🩺");
-clienteJuan.consultar(pacienteFirulais);
-clienteJuan.consultar(pacienteLoro);
-clienteJuan.consultar(pacienteFirulais);
-clienteJuan.consultar(pacienteMichi);
-clienteJuan.consultar(pacienteFirulais);
-clienteMaria.consultar(pacienteOso);
-clienteMaria.consultar(pacienteIguana);
-clienteMaria.consultar(pacienteOso);
-
-// Modificación de Cliente
-console.log("\n✏️ -- Modificación de Cliente -- ✏️");
-redVeterinarias.setCliente(clienteJuan, "Juan Carlos Perez", 2284887070);
-redVeterinarias.getClientes().forEach(c => {
-  console.log(`🧑‍⚕️ Cliente: ${c.getNombre()} - 📞 Teléfono: ${c.getTelefono()} - Id: ${c.getID()} - Vip: ${c.getEsVip()}`);
-});
-
-// Eliminar Veterinaria
-console.log("\n❌ -- Eliminación de Veterinaria -- ❌");
-redVeterinarias.eliminarVeterinaria(veterinariaAnimalia);
-console.log("Veterinarias después de eliminación:");
-redVeterinarias.getVeterinarias().forEach(v => {
-  console.log(`🏥 Veterinaria: ${v.getNombre()} -📍 Dirección: ${v.getDireccion()} - Id: ${v.getID()}`);
-});
-
-// Eliminar Todos los Elementos
-console.log("\n🗑️ -- Eliminación de Todos los Elementos -- 🗑️");
-redVeterinarias.eliminarProveedor(proveedor);
-redVeterinarias.eliminarCliente(clienteJuan);
-redVeterinarias.eliminarCliente(clienteMaria);
-redVeterinarias.eliminarVeterinaria(veterinariaM1);
-
-// Mostrar el Estado Final
-console.log("\n🔚 -- Resultado Final Luego de la Eliminación -- 🔚");
-console.log("📦 Proveedores:");
-console.log(redVeterinarias.getProveedores().length ? redVeterinarias.getProveedores() : "No hay proveedores");
-
-console.log("🏥 Veterinarias:");
-console.log(redVeterinarias.getVeterinarias().length ? redVeterinarias.getVeterinarias() : "No hay veterinarias");
-
-console.log("👤 Clientes:");
-console.log(redVeterinarias.getClientes().length ? redVeterinarias.getClientes() : "No hay clientes");
-
-console.log("🐾 Mascotas:");
-console.log(redVeterinarias.getPacientes().length ? redVeterinarias.getPacientes() : "No hay pacientes");
-
-console.log("\n===========================================");
-console.log("✨ ¡Gracias por usar el sistema de veterinarias! ✨");
-console.log("===========================================");
+pedirOpcion();
