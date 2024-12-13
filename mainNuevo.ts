@@ -162,5 +162,4 @@ function pedirOpcion() {
     manejarSeleccion(opcion);
   });
 }
-
 pedirOpcion();
