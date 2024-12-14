@@ -1,8 +1,10 @@
 import { Paciente } from "./Paciente"
+import { Cliente } from "./Cliente"
 
 export class Gato extends Paciente {
-    
-    public hacerRuido(): void {
-        console.log("Miauuu")
+
+    constructor(nombre : string, idDuenio : Cliente){
+        super(nombre,idDuenio)
     }
+    
 }

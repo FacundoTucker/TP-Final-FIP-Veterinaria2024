@@ -100,8 +100,7 @@ export class menu{
             let indisote = redVeterinarias.getClientes().findIndex(cliente => cliente.getID() === readlineSync.questionInt("Ingrese Id del cliente: "));
             if (indisote !== -1) {
                 console.log("Ingrese que mascota quiere modificar: \n\r Mascotas del cliente: \n\r", redVeterinarias.getClientes()[indisote].getMascotas());
-                //readlineSync.question
-                redVeterinarias.setPaciente(redVeterinarias.getClientes() [indisote].getMascotas()[readlineSync.questionInt("Ingrese el Nro de mascota (orden de aparicion \u{1F602}): ")-1], readlineSync.question("Ingrese nuevo nombre: "));
+                redVeterinarias.setPaciente(redVeterinarias.getClientes() [indisote].getMascotas()[readlineSync.questionInt("Ingrese el Nro de mascota (orden de aparicion XD ): ")-1], readlineSync.question("Ingrese nuevo nombre: "));
             } else {
                 console.log("No se encontró ningún cliente con ese ID.");
                 this.iniciar();
@@ -164,8 +163,7 @@ export class menu{
                 break;
             case 3:
                 let nombreExotico = readlineSync.question('Ingrese el nombre del paciente: ');
-                let onomatopeya = readlineSync.question('Ingrese onomatopeya: ');
-                let exotic = new Exotico(nombreExotico, cliente, onomatopeya);
+                let exotic = new Exotico(nombreExotico, cliente);
                 cliente.agregarMascota(exotic);
                 this.seleccion2(cliente);
                 break;
