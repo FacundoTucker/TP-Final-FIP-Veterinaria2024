@@ -97,9 +97,17 @@ export class menu{
             this.iniciar();
             break;
         case 7://"7 - Modificar Paciente.""
-            // redVeterinarias.setPaciente(pacienteFirulais, "firu2");
+            let indisote = redVeterinarias.getClientes().findIndex(cliente => cliente.getID() === readlineSync.questionInt("Ingrese Id del cliente: "));
+            if (indisote !== -1) {
+                console.log("Ingrese que mascota quiere modificar: \n\r Mascotas del cliente: \n\r", redVeterinarias.getClientes()[indisote].getMascotas());
+                //readlineSync.question
+                redVeterinarias.setPaciente(redVeterinarias.getClientes() [indisote].getMascotas()[readlineSync.questionInt("Ingrese el Nro de mascota (orden de aparicion \u{1F602}): ")-1], readlineSync.question("Ingrese nuevo nombre: "));
+            } else {
+                console.log("No se encontró ningún cliente con ese ID.");
+                this.iniciar();
+            }
+            console.log("Mascotas del cliente: ", redVeterinarias.getClientes()[indisote].getMascotas());
             this.iniciar();
-            console.log("Mascotas del cliente: ", nuevoCliente.getMascotas());  //tambien podemos agregar las mascotas a la red como pacientes
             break;
         case 8: //"8 - Modificar Proveedor."
             redVeterinarias.setProveedor(proveedor,"proveedooor", 34553434);
