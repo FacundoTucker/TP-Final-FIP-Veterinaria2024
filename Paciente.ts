@@ -1,4 +1,3 @@
-import { GeneradorID } from "./GeneradorID";
 import { Cliente } from "./Cliente";
 
 export abstract class Paciente {
