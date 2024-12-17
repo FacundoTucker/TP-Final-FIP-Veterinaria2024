@@ -6,35 +6,45 @@ import { Proveedor } from "./Proveedor";
 export class RedVeterinarias {
     private veterinarias: Veterinaria[] = [];
     private clientes: Cliente[] = [];
-    private pacientes: Paciente[] = [];
+    //private pacientes: Paciente[] = [];
     private proveedores: Proveedor[] = [];
 
     //metodos agregar
     public agregarVeterinaria(veterinaria: Veterinaria): void {
         this.veterinarias.push(veterinaria);
+        console.log("Veterinaria " + veterinaria.getNombre() + " agregada con exito");
     }
     public agregarCliente(cliente: Cliente): void {
         this.clientes.push(cliente);
-    }
-    public agregarPaciente(paciente : Paciente) : void {
-        this.pacientes.push(paciente);
+        console.log("Cliente " + cliente.getNombre() + " agregado con exito");
     }
     public agregarProveedor(proveedor: Proveedor): void {
         this.proveedores.push(proveedor);
+        console.log("Proveedor " + proveedor.getNombre() + " agregado con exito");
     }
 
     //metodos eliminar
     public eliminarVeterinaria(veterinariaAEliminar: Veterinaria): void {
         const index = this.veterinarias.indexOf(veterinariaAEliminar);
-        if (index !== -1) this.veterinarias.splice(index, 1);
+        if (index !== -1){
+            this.veterinarias.splice(index, 1);
+            console.log("Veterinaria " + veterinariaAEliminar.getNombre() + " eliminado con exito");
+        }
     }
     public eliminarCliente(clienteAEliminar: Cliente): void {
         const index = this.clientes.indexOf(clienteAEliminar);
-        if (index !== -1) this.clientes.splice(index, 1);
+        if (index !== -1){
+            this.clientes.splice(index, 1);
+            console.log("Cliente " + clienteAEliminar.getNombre() + " eliminado con exito");
+        }
+
     }
     public eliminarProveedor(proveedorAEliminar: Proveedor): void {
         const index = this.proveedores.indexOf(proveedorAEliminar);
-        if (index !== -1) this.proveedores.splice(index, 1);
+        if (index !== -1) {
+            this.proveedores.splice(index, 1);
+            console.log("Proveedor " + proveedorAEliminar.getNombre() + " eliminado con exito")
+        }
     }
 
     // Getters
@@ -43,9 +53,6 @@ export class RedVeterinarias {
     }
     public getClientes(): Cliente[] {
         return this.clientes;
-    }
-    public getPacientes(): Paciente[] {
-        return this.pacientes;
     }
     public getProveedores(): Proveedor[] {
         return this.proveedores;
