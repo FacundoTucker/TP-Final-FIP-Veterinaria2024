@@ -1,6 +1,6 @@
 import { Cliente } from "./Cliente";
 
-export abstract class Paciente {
+export class Paciente {
     private id: number;
     private nombre: string;
 

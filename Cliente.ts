@@ -57,11 +57,15 @@ export class Cliente {
     //metodo agregar mascota
     public agregarMascota(mascota: Paciente): void {
         this.mascotas.push(mascota);
+        console.log("Paciente " + mascota.getNombre() + " agregado con exito");
     }
 
     //metodo eliminar mascota
     public eliminarMascota(mascotaAEliminar: Paciente): void {
         const index = this.mascotas.indexOf(mascotaAEliminar);
-        if (index !== -1) this.mascotas.splice(index, 1);
+        if (index !== -1) {
+            this.mascotas.splice(index, 1);
+            console.log("Paciente " + mascotaAEliminar.getNombre() + " eliminado con exito");
+        }
     }
 }

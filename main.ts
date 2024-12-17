@@ -1,14 +1,14 @@
 import {menu} from "./menu";
-import { GeneradorID } from "./GeneradorID";
+/*import { GeneradorID } from "./GeneradorID";
 import { Cliente } from "./Cliente";
 import { Perro } from "./Perro";
 import { Gato } from "./Gato";
 import { Exotico } from "./Exotico";
 import { Proveedor } from "./Proveedor";
 import { RedVeterinarias } from "./RedVeterinarias";
-import { Veterinaria } from "./Veterinaria";
+import { Veterinaria } from "./Veterinaria";*/
 
-const generador = new GeneradorID();
+/*const generador = new GeneradorID();
 const redVeterinarias = new RedVeterinarias();
 
 const veterinariaM1 = new Veterinaria("Veterinaria M1", "Vicente Lopez 2037", generador);
@@ -62,7 +62,7 @@ clienteJuan.consultar(pacienteFirulais); //consulta con determinada mascota pero
 clienteJuan.consultar(pacienteFirulais);
 clienteJuan.consultar(pacienteFirulais);
 clienteJuan.consultar(pacienteMichi);
-clienteJuan.consultar(pacienteLoro);
+clienteJuan.consultar(pacienteLoro);*/
 
 
 let Menu = new menu()
