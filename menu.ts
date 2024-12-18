@@ -95,7 +95,13 @@ export class menu{
                     let paciente=redVeterinarias.getClientes() [index];
                     if(paciente.getMascotas()[0] !== undefined){
                         console.log(redVeterinarias.getClientes()[index].getMascotas());
-                        paciente.consultar(paciente.getMascotas()[readlineSync.questionInt("Ingrese el NUMERO de mascota por ORDEN DE APARICION: ")-1])
+                        let nroMascota : number = readlineSync.questionInt("Ingrese el NUMERO de mascota por ORDEN DE APARICION: ")
+                        if(nroMascota - 1 <= paciente.getMascotas.length){
+                            paciente.consultar(paciente.getMascotas()[nroMascota - 1])
+                        } else {
+                            console.error("Dato invalido.")
+                        }
+                        
                     } else {
                         console.error("El cliente no posee mascotas.");
                         this.iniciar();
@@ -249,7 +255,13 @@ export class menu{
                     if (index !== -1) {
                         console.log(redVeterinarias.getClientes()[index].getMascotas());
                         let paciente=redVeterinarias.getClientes() [index];
-                        paciente.eliminarMascota(paciente.getMascotas()[readlineSync.questionInt("Ingrese el NUMERO de mascota por ORDEN DE APARICION: ")-1]);
+                        let nroMascota : number = readlineSync.questionInt("Ingrese el NUMERO de mascota por ORDEN DE APARICION: ")
+                        if(nroMascota - 1 <= paciente.getMascotas.length){
+                            paciente.eliminarMascota(paciente.getMascotas()[nroMascota - 1]);
+                        } else {
+                            console.error("Dato invalido.")
+                        }
+            
                         console.log("Mascotas del cliente: ", redVeterinarias.getClientes()[index].getMascotas());
                     } else {
                         console.error("No se encontró ningún cliente con ese ID.");
